@@ -1,0 +1,26 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  grid-auto-flow: dense;
+  gap: 6px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+img.big {
+  grid-row: span 2 / auto;
+  grid-column: span 2 / auto;
+}
+
+img.wide {
+  grid-column: span 2 / auto;
+}
