@@ -1,5 +1,7 @@
 body {
   font-family: Arial, sans-serif;
+  max-width: 1024px;
+  margin: auto;
 }
 
 .gallery {
@@ -8,8 +10,6 @@ body {
   grid-auto-rows: auto;
   grid-auto-flow: dense;
   gap: 6px;
-  max-width: 1024px;
-  margin: auto;
 }
 
 .gallery img {
