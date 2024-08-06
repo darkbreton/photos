@@ -11,18 +11,24 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(overlay);
 
   document.querySelectorAll(".gallery img").forEach((img) => {
-    img.addEventListener("click", (e) => {
-      photo.src = e.currentTarget.src;
-      photo.addEventListener("load", resizePhoto, { once: true });
-      on();
-      const tmp = new Image();
-      tmp.src = e.currentTarget.src.replace("thumb", "photos");
-      tmp.onload = () => {
-        photo.src = tmp.src;
-      };
-    });
+    img.addEventListener("click", loadImg);
   });
 });
+
+function loadImg(e) {
+  photo.src = e.currentTarget.src;
+  photo.addEventListener("load", resizePhoto, { once: true });
+  on();
+  const tmp = new Image();
+  tmp.src = e.currentTarget.src.replace("thumb", "photos");
+  tmp.addEventListener(
+    "load",
+    () => {
+      photo.src = tmp.src;
+    },
+    { once: true }
+  );
+}
 
 const resizePhoto = () => {
   if (photo.clientWidth > photo.clientHeight) {
