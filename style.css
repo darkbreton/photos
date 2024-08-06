@@ -4,6 +4,8 @@
   grid-auto-rows: auto;
   grid-auto-flow: dense;
   gap: 6px;
+  max-width: 1024px;
+  margin: auto;
 }
 
 .gallery img {
@@ -38,6 +40,5 @@ img.wide {
   cursor: pointer;
 }
 #overlay > img {
-  width: 90%;
   margin: auto;
 }

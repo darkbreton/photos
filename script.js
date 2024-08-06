@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function loadImg(e) {
   photo.src = e.currentTarget.src;
+  photo.style.width = "auto";
+  photo.style.height = "auto";
   photo.addEventListener("load", resizePhoto, { once: true });
   on();
   const tmp = new Image();
@@ -31,13 +33,16 @@ function loadImg(e) {
 }
 
 const resizePhoto = () => {
-  if (photo.clientWidth > photo.clientHeight) {
-    photo.style.width = "90%";
-    photo.style.height = "auto";
-  } else {
-    photo.style.width = "auto";
-    photo.style.height = "90%";
-  }
+  const photo = document.getElementById("photo");
+  const maxW = 0.9 * window.outerWidth;
+  const maxH = 0.9 * window.outerHeight;
+  const photoRatio = photo.clientWidth / photo.clientHeight;
+
+  const w = Math.min(maxW, maxH * photoRatio);
+  const h = w / photoRatio;
+
+  photo.style.width = w + "px";
+  photo.style.height = h + "px";
 };
 
 document.addEventListener("keydown", handleKeyboard);
