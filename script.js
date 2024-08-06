@@ -22,7 +22,13 @@ function loadImg(e) {
   photo.addEventListener("load", resizePhoto, { once: true });
   on();
   const tmp = new Image();
-  tmp.src = e.currentTarget.src.replace("thumb", "photos");
+  if (e.currentTarget.class === "gif") {
+    tmp.src = e.currentTarget.src
+      .replace("thumb", "photos")
+      .replace("jpg", "gif");
+  } else {
+    tmp.src = e.currentTarget.src.replace("thumb", "photos");
+  }
   tmp.addEventListener(
     "load",
     () => {
